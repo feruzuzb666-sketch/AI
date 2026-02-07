@@ -1,37 +1,32 @@
-// Botingizning tokenini bu yerga kiriting (createBot dan olgan tokeningiz)
-const MY_BOT_TOKEN = 'EtyzID9iJBvtG.fny6M7lsH41V3EcZ3lq';
+// Botingiz tokeni
+const MY_BOT_TOKEN = 'Your_Bot_Token_Here';
 
-// registerBot funksiyasi avtomatik ravishda serverdan yuklanadi
+// Botni ro'yxatdan o'tkazish
 registerBot(MY_BOT_TOKEN, async (command, bot, user) => {
-    const lower = command.toLowerCase().trim();
+    const text = command.trim();
 
-    if (lower === '/start') {
+    // /start buyrug‘i
+    if (text.toLowerCase() === '/start') {
         return {
-            text: `Salom, ${user.name}! 👋\n\nMen test botman. Quyidagi buyruqlarni sinab ko'ring:`,
+            text: `Salom, ${user.name}! 👋\n\nMen echo botman 🤖\nSiz nima yozsangiz, shuni qaytaraman.`,
             reply: true,
             actions: [
-                { label: "📊 Statistika", action: "/stats" }, // Bu yer button bo'ladi
-                { label: "ℹ️ Yordam", action: "/help" } // Bu yer button bo'ladi
+                { label: "ℹ️ Yordam", action: "/help" }
             ]
         };
     }
 
-    if (lower === '/stats') { // Bu yerda foydalanuvchi haqida ma'lumotlarni ko'rsatamiz
+    // /help buyrug‘i
+    if (text.toLowerCase() === '/help') {
         return {
-            text: `📊 Sizning ma'lumotlaringiz:\n\nIsm: ${user.name}\nUsername: @${user.username}\nEmail: ${user.email}\nVerified: ${user.verified ? '✅' : '❌'}`,
+            text: "ℹ️ Yordam:\n\n/start - Botni boshlash\n/help - Yordam\n\nShunchaki matn yozing — men uni qaytaraman 🔁",
             reply: true
         };
     }
 
-    if (lower === '/help') {
-        return {
-            text: "ℹ️ Yordam:\n\n/start - Botni boshlash\n/stats - Statistikani ko'rish\n/help - Bu yordam xabari",
-            reply: true
-        };
-    }
-
-    // more commands can be added here...
-
-    // Agar buyruq tanilmasa, foydalanuvchiga xabar yuboramiz
-    return "Kechirasiz, bu buyruqni tushunmadim. /help ni bosing.";
+    // ✨ ECHO QISMI (asosiy joy)
+    return {
+        text: `🗣 Siz yozdingiz:\n\n${text}`,
+        reply: true
+    };
 });
