@@ -1,5 +1,5 @@
 // Botingiz tokeni
-const MY_BOT_TOKEN = 'Your_Bot_Token_Here';
+const MY_BOT_TOKEN = 'EtyzID9iJBvtG.fny6M7lsH41V3EcZ3lq';
 
 // Botni ro'yxatdan o'tkazish
 registerBot(MY_BOT_TOKEN, async (command, bot, user) => {
@@ -30,3 +30,4 @@ registerBot(MY_BOT_TOKEN, async (command, bot, user) => {
         reply: true
     };
 });
+
